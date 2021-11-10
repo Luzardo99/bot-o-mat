@@ -1,10 +1,30 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
+import Bot from './components/Bot';
 
 function App() {
 
     const [name, setName] = useState("");
     const [type, setType] = useState("");
+    const [id, setId] = useState(1);
+    const [botList, setBotList] = useState([]);
+
+    const addBot = () => {
+        // if (description === "" || date === "") {
+        //     setError(true);
+        //     return;
+        // }
+
+        setBotList(
+            botList.concat(  
+                <Bot name={name} type={type} id={id} key = {id} />
+            )
+        );
+        setId(id+1);
+
+        // setDescription("");
+        // setError(false);
+    }
 
     return (
         <div className="App">
@@ -19,8 +39,9 @@ function App() {
             </div>
 
             <input value={name} onChange={(e) => {setName(e.target.value)}}/>
-            <button onClick={() => {console.log(type + " " + name)}}>Create Bot</button>
+            <button onClick={() => {addBot(); console.log(type + " " + name)}}>Create Bot</button>
         
+            {botList}
         </div>
     );
 }
