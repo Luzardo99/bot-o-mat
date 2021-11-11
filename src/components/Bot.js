@@ -34,6 +34,7 @@ function Bot(props) {
     const [loading5, setLoading5]= useState(false); 
 
     useEffect(() => {
+        // tasks will be assigned depending on the type of robot
         if (type === "Unipedal" || type === "Arachnid") {
             setTask1("do the dishes");
             setTask2("sweep the house");
@@ -57,6 +58,7 @@ function Bot(props) {
 
     // completes the task after a certain time period
     async function doTask (des, num) {
+        // button will load once it gets clicked on
         toggleLoading(num);
         if (des === "do the dishes") {
             return new Promise(function(resolve) {
@@ -159,6 +161,7 @@ function Bot(props) {
             return doTask(task5, 5);
         }
 
+        // task doesn't start until the previous one is finished
         taskOne().then(taskTwo).then(taskThree).then(taskFour).then(taskFive);
         setShowAll(false);
     }
