@@ -163,6 +163,8 @@ function Bot(props) {
                 <label>{task5}</label>
                 <button class="button is-black" onClick={()=>{doTask(task5)}}>do task</button>
             </div>
+
+            <FontAwesomeIcon icon="robot" size="2x" />
         </div>
     );
 }
