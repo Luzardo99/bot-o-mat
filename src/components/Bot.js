@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import '../styles/Bot.css'
+import "./Fontawesomeicon.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Bot(props) {
 
@@ -15,19 +18,19 @@ function Bot(props) {
     const [task5, setTask5] = useState("");
 
     useEffect(() => {
-        if (type === "UNIPEDAL" || type === "AERONAUTICAL") {
+        if (type === "Unipedal" || type === "Arachnid") {
             setTask1("do the dishes");
             setTask2("sweep the house");
             setTask3("do the laundry");
             setTask4("take out the recycling");
             setTask5("make a sammich");
-        } else if (type === "BIPEDAL" || type === "RADIAL") {
+        } else if (type === "Bipedal" || type === "Radial") {
             setTask1("mow the lawn");
             setTask2("rake the leaves");
             setTask3("give the dog a bath");
             setTask4("bake some cookies");
             setTask5("wash the car");
-        } else if (type === "QUADRUPEDAL" || type === "ARACHNID") {
+        } else if (type === "Quadrupedal" || type === "Aeronautical") {
             setTask1("do the dishes");
             setTask2("do the laundry");
             setTask3("make a sammich");
@@ -133,25 +136,33 @@ function Bot(props) {
     }
 
     return (
-        <div className="App">
-            <p> {id} </p>
-            <p> {type} </p>
-            <p> {name} </p>
+        <div className="bot">
+            <p> {"Bot " + name} </p>
+            <p> {"Type: " + type} </p>
 
+            <button class="button is-light" onClick={()=>{all()}}>do all</button>
+            <br></br>
 
-            <label>{task1}</label>
-            <button onClick={()=>{doTask(task1)}}>do task</button>
-            <label>{task2}</label>
-            <button onClick={()=>{doTask(task2)}}>do task</button>
-            <label>{task3}</label>
-            <button onClick={()=>{doTask(task3)}}>do task</button>
-            <label>{task4}</label>
-            <button onClick={()=>{doTask(task4)}}>do task</button>
-            <label>{task5}</label>
-            <button onClick={()=>{doTask(task5)}}>do task</button>
-
-
-            <button onClick={()=>{all()}}>all</button>
+            <div>
+                <label>{task1}</label>        
+                <button class="button is-black" onClick={()=>{doTask(task1)}}>do task</button>
+            </div>
+            <div>
+                <label>{task2}</label>
+                <button class="button is-black" onClick={()=>{doTask(task2)}}>do task</button>
+            </div>
+            <div>
+                <label>{task3}</label>
+                <button class="button is-black" onClick={()=>{doTask(task3)}}>do task</button>
+            </div>
+            <div>
+                <label>{task4}</label>
+                <button class="button is-black" onClick={()=>{doTask(task4)}}>do task</button>
+            </div>
+            <div>
+                <label>{task5}</label>
+                <button class="button is-black" onClick={()=>{doTask(task5)}}>do task</button>
+            </div>
         </div>
     );
 }

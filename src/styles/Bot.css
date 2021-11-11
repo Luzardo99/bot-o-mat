@@ -1,0 +1,16 @@
+.bot {
+    text-align: center;
+    width: 300px;
+    background-color: rgb(66, 199, 77);
+    margin: 2%;
+    padding: 10px;
+}
+
+.bot button {
+    float: right;
+    font-size: 10px !important;
+}
+
+.bot div {
+    margin: 10px;
+}

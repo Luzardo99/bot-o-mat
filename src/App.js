@@ -33,18 +33,18 @@ function App() {
     return (
         <div className="App">
             <div onChange={(e) => {setType(e.target.value); console.log(e.target.value);}}>
-                <input type="radio" value="UNIPEDAL" name="gender"/> Unipedal
-                <input type="radio" value="BIPEDAL" name="gender"/> Bipedal
-                <input type="radio" value="QUADRUPEDAL" name="gender"/> Quadrupedal
+                <input className="radio" type="radio" value="Unipedal" name="gender"/> Unipedal
+                <input className="radio" type="radio" value="Bipedal" name="gender"/> Bipedal
+                <input className="radio" type="radio" value="Quadrupedal" name="gender"/> Quadrupedal
                 <br></br>
-                <input type="radio" value="ARACHNID" name="gender"/> Arachnid
-                <input type="radio" value="RADIAL" name="gender"/> Radial
-                <input type="radio" value="AERONAUTICAL" name="gender"/> Aeronautical
+                <input className="radio" type="radio" value="Arachnid" name="gender"/> Arachnid
+                <input className="radio" type="radio" value="Radial" name="gender"/> Radial
+                <input className="radio" type="radio" value="Aeronautical" name="gender"/> Aeronautical
             </div>
 
-            <input value={name} onChange={(e) => {setName(e.target.value)}}/>
-            <button onClick={() => {addBot(); console.log(type + " " + name)}}>Create Bot</button>
-            {error && <p>must have type and name</p>}
+            <input className="input is-primary" value={name} placeholder="bot name" onChange={(e) => {setName(e.target.value)}}/>
+            <button className="button is-primary" onClick={() => {addBot(); console.log(type + " " + name)}}>Create Bot</button>
+            {error && <p>Please select type and name</p>}
 
             {botList}
         </div>
