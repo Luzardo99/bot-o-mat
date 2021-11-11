@@ -24,6 +24,7 @@ function Bot(props) {
     const [show3, setShow3] = useState(true);
     const [show4, setShow4] = useState(true);
     const [show5, setShow5] = useState(true);
+    const [showAll, setShowAll] = useState(true);
 
     // this is used to make the button into a loading button
     const [loading1, setLoading1]= useState(false); 
@@ -159,6 +160,7 @@ function Bot(props) {
         }
 
         taskOne().then(taskTwo).then(taskThree).then(taskFour).then(taskFive);
+        setShowAll(false);
     }
 
     // this changes the state show to false, which turns the button into a paragraph
@@ -208,18 +210,45 @@ function Bot(props) {
         }
     }
 
+    // this is to add seconds to the tasks text
+    const taskNaming = (des) => {
+        if (des === "do the dishes") {
+            return " (1s)"
+        } else if (des === "sweep the house") {
+            return " (3s)"
+        } else if (des === "do the laundry") {
+            return " (10s)"
+        } else if (des === "take out the recycling") {
+            return " (4s)"
+        } else if (des === "make a sammich") {
+            return " (7s)"
+        } else if (des === "mow the lawn") {
+            return " (20s)"
+        } else if (des === "rake the leaves") {
+            return " (18s)"
+        } else if (des === "give the dog a bath") {
+            return " (14.5s)"
+        } else if (des === "bake some cookies") {
+            return " (8s)"
+        } else if (des === "wash the car") {
+            return " (20s)"
+        }
+    }
+
 
     return (
         <div className="bot">
             <h1> {"Bot " + name} </h1>
             <h1> {"Type: " + type} </h1>
 
-            <button class="button is-light" onClick={()=>{all()}}>complete all tasks</button>
+            {showAll && 
+                <button class="button is-light" onClick={()=>{all()}}>do all tasks</button>
+            }
             <br></br>
 
             
             <div>
-                <label>{task1}</label>
+                <label>{task1 + taskNaming(task1)}</label>
                 {show1
                     ?  
                     <button class={"button is-black " + loading(1)} onClick={()=>{doTask(task1, 1)}}>do task</button>
@@ -228,28 +257,28 @@ function Bot(props) {
             </div>
 
             <div>
-                <label>{task2}</label>
+                <label>{task2 + taskNaming(task2)}</label>
                 {show2
                     ?  <button class={"button is-black " + loading(2)} onClick={()=>{doTask(task2, 2)}}>do task</button>
                     : <p>complete!</p>
                 }
             </div>
             <div>
-                <label>{task3}</label>
+                <label>{task3 + taskNaming(task3)}</label>
                 {show3
                     ?  <button class={"button is-black " + loading(3)} onClick={()=>{doTask(task3, 3)}}>do task</button>
                     : <p>complete!</p>
                 }
             </div>
             <div>
-                <label>{task4}</label>
+                <label>{task4 + taskNaming(task4)}</label>
                 {show4
                     ?  <button class={"button is-black " + loading(4)} onClick={()=>{doTask(task4, 4)}}>do task</button>
                     : <p>complete!</p>
                 }
             </div>
             <div>
-                <label>{task5}</label>
+                <label>{task5 + taskNaming(task5)}</label>
                 {show5
                     ?  <button class={"button is-black " + loading(5)} onClick={()=>{doTask(task5, 5)}}>do task</button>
                     : <p>complete!</p>
