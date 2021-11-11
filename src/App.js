@@ -8,22 +8,26 @@ function App() {
     const [type, setType] = useState("");
     const [id, setId] = useState(1);
     const [botList, setBotList] = useState([]);
+    const [error, setError] = useState(false);
 
+    // This functions adds a bot with the specified name and type
     const addBot = () => {
-        // if (description === "" || date === "") {
-        //     setError(true);
-        //     return;
-        // }
+        // bot must have name and type
+        // if not then an error message will pop up
+        if (name === "" || type === "") {
+            setError(true);
+            return;
+        }
 
+        // the bot component is added onto an array of bots
         setBotList(
             botList.concat(  
                 <Bot name={name} type={type} id={id} key = {id} />
             )
         );
         setId(id+1);
-
-        // setDescription("");
-        // setError(false);
+        setName("");
+        setError(false);
     }
 
     return (
@@ -40,7 +44,8 @@ function App() {
 
             <input value={name} onChange={(e) => {setName(e.target.value)}}/>
             <button onClick={() => {addBot(); console.log(type + " " + name)}}>Create Bot</button>
-        
+            {error && <p>must have type and name</p>}
+
             {botList}
         </div>
     );
