@@ -11,17 +11,26 @@ function Bot(props) {
         name
     } = props;
 
+    // these contains the tasks that the robot will be able to do
     const [task1, setTask1] = useState("");
     const [task2, setTask2] = useState("");
     const [task3, setTask3] = useState("");
     const [task4, setTask4] = useState("");
     const [task5, setTask5] = useState("");
 
+    // this is used to change the button into a text saying complete
     const [show1, setShow1] = useState(true);
     const [show2, setShow2] = useState(true);
     const [show3, setShow3] = useState(true);
     const [show4, setShow4] = useState(true);
     const [show5, setShow5] = useState(true);
+
+    // this is used to make the button into a loading button
+    const [loading1, setLoading1]= useState(false); 
+    const [loading2, setLoading2]= useState(false); 
+    const [loading3, setLoading3]= useState(false); 
+    const [loading4, setLoading4]= useState(false); 
+    const [loading5, setLoading5]= useState(false); 
 
     useEffect(() => {
         if (type === "Unipedal" || type === "Arachnid") {
@@ -46,7 +55,8 @@ function Bot(props) {
     }, []);
 
     // completes the task after a certain time period
-    async function doTask (des, num) {    
+    async function doTask (des, num) {
+        toggleLoading(num);
         if (des === "do the dishes") {
             return new Promise(function(resolve) {
                 setTimeout(function() {
@@ -167,6 +177,37 @@ function Bot(props) {
         }
     }
 
+    // changes the classname of the "do tasks" buttons so that it will display loading button instead
+    const loading = (num) => {
+        if (num === 1 && loading1) {
+            return "is-loading";
+        } else if (num === 2 && loading2) {
+            return "is-loading";
+        } else if (num === 3 && loading3) {
+            return "is-loading";
+        } else if (num === 4 && loading4) {
+            return "is-loading";
+        } else if (num === 5 && loading5) {
+            return "is-loading";
+        }
+    }
+
+    // When user clicks on the "do tasks" button, it will call this function which sets the loading to true
+    // this will cause the class name to change which will make the button a loading button
+    const toggleLoading = (num) => {
+        if (num === 1) {
+            setLoading1(true);
+        } else if (num === 2) {
+            setLoading2(true);
+        } else if (num === 3) {
+            setLoading3(true);
+        } else if (num === 4) {
+            setLoading4(true);
+        } else if (num === 5) {
+            setLoading5(true);
+        }
+    }
+
 
     return (
         <div className="bot">
@@ -180,7 +221,8 @@ function Bot(props) {
             <div>
                 <label>{task1}</label>
                 {show1
-                    ?  <button class="button is-black" onClick={()=>{doTask(task1, 1)}}>do task</button>
+                    ?  
+                    <button class={"button is-black " + loading(1)} onClick={()=>{doTask(task1, 1)}}>do task</button>
                     : <p>complete!</p>
                 }
             </div>
@@ -188,28 +230,28 @@ function Bot(props) {
             <div>
                 <label>{task2}</label>
                 {show2
-                    ?  <button class="button is-black" onClick={()=>{doTask(task2, 2)}}>do task</button>
+                    ?  <button class={"button is-black " + loading(2)} onClick={()=>{doTask(task2, 2)}}>do task</button>
                     : <p>complete!</p>
                 }
             </div>
             <div>
                 <label>{task3}</label>
                 {show3
-                    ?  <button class="button is-black" onClick={()=>{doTask(task3, 3)}}>do task</button>
+                    ?  <button class={"button is-black " + loading(3)} onClick={()=>{doTask(task3, 3)}}>do task</button>
                     : <p>complete!</p>
                 }
             </div>
             <div>
                 <label>{task4}</label>
                 {show4
-                    ?  <button class="button is-black" onClick={()=>{doTask(task4, 4)}}>do task</button>
+                    ?  <button class={"button is-black " + loading(4)} onClick={()=>{doTask(task4, 4)}}>do task</button>
                     : <p>complete!</p>
                 }
             </div>
             <div>
                 <label>{task5}</label>
                 {show5
-                    ?  <button class="button is-black" onClick={()=>{doTask(task5, 5)}}>do task</button>
+                    ?  <button class={"button is-black " + loading(5)} onClick={()=>{doTask(task5, 5)}}>do task</button>
                     : <p>complete!</p>
                 }
             </div>
