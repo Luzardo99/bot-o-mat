@@ -2,3 +2,13 @@
   text-align: center;
 }
 
+.nameInput {
+    max-width: 600px;
+    margin-bottom: 10px;
+}
+
+.bots {
+    display: flex;
+    flex-wrap: wrap;
+}
+

@@ -42,11 +42,14 @@ function App() {
                 <input className="radio" type="radio" value="Aeronautical" name="gender"/> Aeronautical
             </div>
 
-            <input className="input is-primary" value={name} placeholder="bot name" onChange={(e) => {setName(e.target.value)}}/>
+            <input className="input is-primary nameInput" value={name} placeholder="bot name" onChange={(e) => {setName(e.target.value)}}/>
+            <br></br>
             <button className="button is-primary" onClick={() => {addBot(); console.log(type + " " + name)}}>Create Bot</button>
             {error && <p>Please select type and name</p>}
 
-            {botList}
+            <div className="bots">
+                {botList}
+            </div>
         </div>
     );
 }
