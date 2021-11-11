@@ -1,6 +1,7 @@
 # bot-o-mat
 https://bot-o-mat-dannylin.netlify.app
 
+Click on link to open application.
 
 ## Getting Started with Create React App
 
